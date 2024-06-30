@@ -2,16 +2,19 @@ package com.example.backend_project_assignment_aakash_kumar.controller;
 
 
 import com.example.backend_project_assignment_aakash_kumar.Model.User;
+import com.example.backend_project_assignment_aakash_kumar.dtos.UserReqdto;
+import com.example.backend_project_assignment_aakash_kumar.dtos.Userdto;
 import com.example.backend_project_assignment_aakash_kumar.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("users")
+@RequestMapping("/users")
 public class UserController {
 
     @Autowired
@@ -49,5 +52,16 @@ public class UserController {
     @GetMapping("/h")
     public  String gethello(){
         return "Hola";
+    }
+
+    @PostMapping("/signup")
+    public ResponseEntity<Userdto> signup(@RequestBody UserReqdto userReqdto){
+        Userdto Us=userService.signup(userReqdto);
+        return new ResponseEntity<>(Us, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/signin")
+    public  ResponseEntity<?> getsignin(){
+        return new ResponseEntity<>(10,HttpStatus.OK);
     }
 }

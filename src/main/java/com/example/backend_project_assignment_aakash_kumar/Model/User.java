@@ -3,14 +3,16 @@ package com.example.backend_project_assignment_aakash_kumar.Model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.Set;
 
 @Entity
 @Getter
 @Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class User {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
