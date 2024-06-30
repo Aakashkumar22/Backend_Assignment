@@ -1,0 +1,261 @@
+{
+	"info": {
+		"_postman_id": "4387569d-5110-404a-8c29-f69c7405bf07",
+		"name": "Backend Assignment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "36189749",
+		"_collection_link": "https://planetary-robot-22864.postman.co/workspace/New-Team-Workspace~d29d191e-d2b0-4d4d-a19e-96c8d12de5cd/collection/36189749-4387569d-5110-404a-8c29-f69c7405bf07?action=share&source=collection_link&creator=36189749"
+	},
+	"item": [
+		{
+			"name": "Discussions_API",
+			"item": [
+				{
+					"name": "create Discusssion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {\r\n        \"id\": 11  // Replace with the actual user ID in your database\r\n    },\r\n    \"text\": \"Sample discussion text\",\r\n    \"imageUrl\": \"https://example.com/image.jpg\",\r\n    \"hashTags\": [\r\n        {\r\n            \"id\": 2,  // Replace with the actual hashtag IDs in your database\r\n            \"name\": \"#viral\"\r\n        }\r\n       \r\n    ],\r\n    \"createdOn\": \"2024-06-30T14:30:00\"  // Replace with the actual date and time\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1010/discussions",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1010",
+							"path": [
+								"discussions"
+							]
+						},
+						"description": "\n### POST /discussions\n\nThis endpoint is used to create a new discussion.\n\n#### Request Body\n- `user.id` (number) - The ID of the user creating the discussion.\n- `text` (string) - The text content of the discussion.\n- `imageUrl` (string) - The URL of the image associated with the discussion.\n- `hashTags` (array of objects) - An array of hashtag objects containing ID and name.\n  - `id` (number) - The ID of the hashtag.\n  - `name` (string) - The name of the hashtag.\n- `createdOn` (string) - The date and time when the discussion was created.\n\n#### Response\nThe response is in text/xml format and does not contain any specific data.\n\n#### Example\n```json\n{\n  \"user\": {\n    \"id\": 11\n  },\n  \"text\": \"Sample discussion text\",\n  \"imageUrl\": \"https://example.com/image.jpg\",\n  \"hashTags\": [\n    {\n      \"id\": 2,\n      \"name\": \"#viral\"\n    }\n  ],\n  \"createdOn\": \"2024-06-30T14:30:00\"\n}\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User_API",
+			"item": [
+				{
+					"name": "create user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":1,\r\n    \"name\":\"shubham\",\r\n    \"email\":\"shyb22@gmail.com\",\r\n    \"mobile\":7060456780,\r\n    \"password\":\"shub@123\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1010/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1010",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list  all user",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1010/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1010",
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "serach_user_by_name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1010/users?\"shubham\"",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1010",
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "\"shubham\"",
+									"value": null
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update _user",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n\r\n    \"name\":\"Aakash\",\r\n    \"email\":\"aka22@gmail.com\",\r\n    \"mobile\":7060556780,\r\n    \"password\":\"akub@123\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1010/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1010",
+							"path": [
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete user",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:1010/users/6",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1010",
+							"path": [
+								"users",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "sign_up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":34,\r\n    \"name\":\"Rah\",\r\n    \"email\":\"rs2@gmail.com\",\r\n    \"mobile\":706580,\r\n    \"password\":\"brsh23\",\r\n    \"discussion\":null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:1010/users/signup/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "1010",
+							"path": [
+								"users",
+								"signup",
+								"user"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HashTag _API",
+			"item": [
+				{
+					"name": "post HashTAG",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Likes_API",
+			"item": [
+				{
+					"name": "create_LIKE",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "viewcount_API",
+			"item": [
+				{
+					"name": "post Viewcount",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Follwer-API",
+			"item": [
+				{
+					"name": "Add follwer",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "get_allfollwers",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,24 +1,39 @@
 package com.example.backend_project_assignment_aakash_kumar.controller;
 
 
+import com.example.backend_project_assignment_aakash_kumar.Jwt.JwtUtil;
 import com.example.backend_project_assignment_aakash_kumar.Model.User;
+import com.example.backend_project_assignment_aakash_kumar.Repository.UserRepository;
 import com.example.backend_project_assignment_aakash_kumar.dtos.UserReqdto;
 import com.example.backend_project_assignment_aakash_kumar.dtos.Userdto;
+import com.example.backend_project_assignment_aakash_kumar.service.CustomUserDetailsService;
 import com.example.backend_project_assignment_aakash_kumar.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
 @RestController
 @RequestMapping("/users")
+
 public class UserController {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private JwtUtil jwtUtil;
+
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @Autowired
+    private UserRepository userRepository;
 
     @PostMapping
     public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
@@ -54,14 +69,17 @@ public class UserController {
         return "Hola";
     }
 
-    @PostMapping("/signup")
-    public ResponseEntity<Userdto> signup(@RequestBody UserReqdto userReqdto){
-        Userdto Us=userService.signup(userReqdto);
-        return new ResponseEntity<>(Us, HttpStatus.CREATED);
+
+
+    @PostMapping("/signup/user")
+    public ResponseEntity<Userdto> signup(@RequestBody UserReqdto userReqdto) {
+        Userdto userDto = userService.signup(userReqdto);
+        return new ResponseEntity<>(userDto, HttpStatus.CREATED);
     }
 
-    @GetMapping("/signin")
+    @GetMapping("/signin/user")
     public  ResponseEntity<?> getsignin(){
-        return new ResponseEntity<>(10,HttpStatus.OK);
+        return null;
+
     }
 }

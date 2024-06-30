@@ -2,10 +2,7 @@ package com.example.backend_project_assignment_aakash_kumar.dtos;
 
 import com.example.backend_project_assignment_aakash_kumar.Model.Discussion;
 import com.example.backend_project_assignment_aakash_kumar.Model.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.Set;
 
@@ -13,6 +10,8 @@ import java.util.Set;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
 public class Userdto {
 
     private Long id;
@@ -21,6 +20,13 @@ public class Userdto {
     private String email;
     private String password;
     private Set<Discussion> discussions;
+
+    public Userdto(User user) {
+        this.id = user.getId();
+        this.name = user.getName();
+        this.email = user.getEmail();
+        this.mobile = user.getMobile();
+    }
 
     public static  Userdto from (User user){
         Userdto ans= Userdto.builder()
